@@ -1,10 +1,15 @@
-
 name := "sbt-idea-shell"
 organization := "org.jetbrains"
 version := "1.0"
 scalaVersion := "2.10.6"
 
 sbtPlugin := true
+
+licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
+
+publishMavenStyle := false
+bintrayOrganization := Some("jetbrains")
+bintrayRepository := "sbt-plugins"
 
 libraryDependencies ++= Seq(
   "org.scalactic" %% "scalactic" % "3.0.1",
