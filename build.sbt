@@ -10,9 +10,10 @@ licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"
 publishMavenStyle := false
 bintrayOrganization := Some("jetbrains")
 bintrayRepository := "sbt-plugins"
+bintrayVcsUrl := Option("https://github.com/JetBrains/sbt-idea-shell")
 
 libraryDependencies ++= Seq(
-  "org.scalactic" %% "scalactic" % "3.0.1",
+  "org.scalactic" %% "scalactic" % "3.0.1" % "test",
   "org.scalatest" %% "scalatest" % "3.0.1" % "test"
 )
 
