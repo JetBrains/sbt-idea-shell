@@ -24,16 +24,16 @@ object IdeaShellPlugin extends AutoPlugin {
   val IdeaShell: String = "idea-" + Shell
 
   // three invisible spaces ought to be enough for anyone
-  val IDEA_PROMPT_MARKER = "\u200b\u200b\u200b"
+  val IDEA_PROMPT_MARKER = "[IJ]"
 
   // copied and adapted from shell command in sbt.BasicCommands
   private def ideaShell = Command.command(IdeaShell, Help.more(IdeaShell, ShellDetailed)) { s =>
     val history = (s get BasicKeys.historyPath) getOrElse Some(new File(s.baseDir, ".history"))
-//    val prompt = s get BasicKeys.shellPrompt match {
-//      case Some(pf) => pf(s) + IDEA_PROMPT_MARKER
-//      case None => ">" + IDEA_PROMPT_MARKER
-//    }
-    val prompt = ">"
+    val userPrompt = s get BasicKeys.shellPrompt match {
+      case Some(pf) =>  pf(s)
+      case None => "> "
+    }
+    val prompt = IDEA_PROMPT_MARKER + userPrompt
 
     val reader = new FullReader(history, s.combinedParser)
     val line = reader.readLine(prompt)
