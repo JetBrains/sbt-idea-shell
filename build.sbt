@@ -1,7 +1,10 @@
 name := "sbt-idea-shell"
 organization := "org.jetbrains"
 
-scalaVersion := (sbtVersionSeries.value match { case Sbt013 => "2.10.6"; case Sbt1 => "2.12.2" })
+scalaVersion := (sbtVersionSeries.value match {
+  case Sbt013 => "2.10.6"
+  case Sbt1 => "2.12.2"
+})
 
 sbtPlugin := true
 
@@ -24,4 +27,4 @@ ScriptedPlugin.scriptedSettings
 scriptedLaunchOpts ++=
   Seq("-Xmx1024M", "-XX:MaxPermSize=256M", "-Dplugin.version=" + version.value)
 
-crossSbtVersions := Seq("0.13.15", "1.0.0-M5")
+crossSbtVersions := Seq("0.13.15", "1.0.0-M6")
