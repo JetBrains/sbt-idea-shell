@@ -8,4 +8,4 @@ libraryDependencies += "org.scala-sbt" % "scripted-plugin" % sbtVersion.value
 
 addSbtPlugin("com.dwijnand" % "sbt-dynver" % "1.3.0")
 
-addSbtPlugin("org.foundweekends" % "sbt-bintray" % "0.5.0")
+addSbtPlugin("me.lessis" % "bintray-sbt" % "0.3.0")

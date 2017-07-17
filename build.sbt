@@ -14,6 +14,7 @@ publishMavenStyle := false
 bintrayOrganization := Some("jetbrains")
 bintrayRepository := "sbt-plugins"
 bintrayVcsUrl := Option("https://github.com/JetBrains/sbt-idea-shell")
+bintrayCredentialsFile := file(".credentials")
 
 libraryDependencies ++= Seq(
   "org.scalactic" %% "scalactic" % "3.0.1" % "test",
