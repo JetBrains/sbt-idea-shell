@@ -2,7 +2,7 @@ package org.jetbrains.sbt
 
 import sbt.Keys.commands
 import sbt.plugins.JvmPlugin
-import sbt.{AutoPlugin, PluginTrigger}
+import sbt.{AutoPlugin, PluginTrigger, Plugins}
 import pluginCommands._
 
 /**
@@ -11,7 +11,7 @@ import pluginCommands._
 object IdeaShellPlugin extends AutoPlugin {
 
   override def trigger: PluginTrigger = allRequirements
-  override def requires = JvmPlugin
+  override def requires: Plugins = JvmPlugin
 
   object autoImport {}
 
