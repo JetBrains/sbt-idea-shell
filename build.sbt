@@ -18,7 +18,6 @@ libraryDependencies ++= Seq(
 initialCommands := """import org.jetbrains._"""
 
 // set up 'scripted; sbt plugin for testing sbt plugins
-ScriptedPlugin.scriptedSettings
 scriptedLaunchOpts ++=
   Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
 
