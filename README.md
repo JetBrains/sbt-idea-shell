@@ -11,7 +11,7 @@ This plugin is injected into an sbt shell session directly by IDEA and should no
 
 ## Problems?
 
-Please report any issues related to sbt-structure in IntelliJ on the [IntelliJ Scala YouTrack project]( https://youtrack.jetbrains.com/issues/SCL).
+Please report any issues related to sbt-idea-shell in IntelliJ on the [IntelliJ Scala YouTrack project]( https://youtrack.jetbrains.com/issues/SCL).
 
 ## Building
 
