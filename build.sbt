@@ -10,11 +10,6 @@ bintrayOrganization := Some("jetbrains")
 bintrayRepository := "sbt-plugins"
 bintrayVcsUrl := Option("https://github.com/JetBrains/sbt-idea-shell")
 
-libraryDependencies ++= Seq(
-  "org.scalactic" %% "scalactic" % "3.0.1" % "test",
-  "org.scalatest" %% "scalatest" % "3.0.1" % "test"
-)
-
 initialCommands := """import org.jetbrains._"""
 
 // set up 'scripted; sbt plugin for testing sbt plugins
