@@ -16,4 +16,4 @@ initialCommands := """import org.jetbrains._"""
 scriptedLaunchOpts ++=
   Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
 
-crossSbtVersions := Seq("0.13.17", "1.1.1")
+crossSbtVersions := Seq("0.13.17", "1.1.4")
