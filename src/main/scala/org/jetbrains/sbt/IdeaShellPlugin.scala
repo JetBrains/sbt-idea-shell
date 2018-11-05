@@ -2,7 +2,7 @@ package org.jetbrains.sbt
 
 import sbt.Keys.commands
 import sbt.plugins.JvmPlugin
-import sbt.{AutoPlugin, PluginTrigger, Plugins}
+import sbt.{AutoPlugin, Def, PluginTrigger, Plugins}
 import pluginCommands._
 
 /**
@@ -15,11 +15,14 @@ object IdeaShellPlugin extends AutoPlugin {
 
   object autoImport {}
 
-  override lazy val projectSettings = Seq()
+  override lazy val projectSettings: Seq[Def.Setting[_]] = Seq(
+    // history is provided by builtin shell, don't spam regular history with generated commands
+    sbt.Keys.historyPath := None
+  )
 
-  override lazy val buildSettings = Seq(
+  override lazy val buildSettings: Seq[Def.Setting[_]] = Seq(
     commands += ideaShell
   )
 
-  override def globalSettings = Seq()
+  override def globalSettings: Seq[Def.Setting[_]] = Seq()
 }
