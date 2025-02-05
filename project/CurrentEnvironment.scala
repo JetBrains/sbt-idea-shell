@@ -1,8 +1,6 @@
 import sbt.File
 import sbt.io.syntax.fileToRichFile
 
-import java.io.File
-
 object CurrentEnvironment {
 
   val OsName: String = System.getProperty("os.name").toLowerCase
