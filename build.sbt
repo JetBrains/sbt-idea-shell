@@ -27,7 +27,7 @@ val scriptedTestsSettings: Seq[Def.Setting[?]] = Seq(
   scriptedLaunchOpts ++= Seq(
     "-Xmx1024M",
     s"-Dplugin.version=${version.value}",
-  ),
+  ) ++ CurrentEnvironment.getIvyHomeVmOptionForTeamcity,
 
   scripted / javaHome := Some(CurrentEnvironment.JavaOldHome),
 
@@ -40,7 +40,7 @@ val scriptedTestsSettings: Seq[Def.Setting[?]] = Seq(
       SbtVersion_1_LatestForTests
     else
       scriptedSbt.value
-  }
+  },
 )
 
 lazy val root = project.in(file("."))
