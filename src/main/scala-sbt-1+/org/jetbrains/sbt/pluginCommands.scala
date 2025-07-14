@@ -8,7 +8,9 @@ object pluginCommands {
 
   private val IdeaShellExec = Exec(IdeaShellCommandString, None)
 
-  // copied and adapted from shell command in sbt.BasicCommands
+  /**
+   * copied and adapted from `shell` command in [[sbt.BasicCommands]] (since `1.x` renamed to "oldshell")
+   */
   def ideaShell: Command = Command.command(IdeaShellCommandString, Help.more(IdeaShellCommandString, ShellDetailed)) { s =>
     val history = s.get(BasicKeys.historyPath).getOrElse(Some(new File(s.baseDir, ".history")))
     val userPrompt = s.get(BasicKeys.shellPrompt) match {

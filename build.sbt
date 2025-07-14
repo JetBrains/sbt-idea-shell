@@ -54,7 +54,11 @@ lazy val root = project.in(file("."))
     sonatypeSettings,
     scriptedTestsSettings,
 
-    scalaVersion := Scala212,
+    scalaVersion := Scala3,
+//    scalaVersion := Scala212,
+//    scalaVersion := Scala210,
+
+    dependencyOverrides := Nil,
     crossScalaVersions := Seq(
       Scala210,
       Scala212,
