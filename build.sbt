@@ -1,6 +1,5 @@
 import lmcoursier.internal.shaded.coursier.core.Version
-import sbt.Def
-import xerial.sbt.Sonatype.GitHubHosting
+import sbt.{Def, url}
 
 val Scala210 = "2.10.7"
 val Scala212 = "2.12.20"
@@ -15,10 +14,30 @@ val SbtVersion_2 = "2.0.0-M3"
 val SbtVersion_1_LatestForTests = "1.10.7"
 
 val sonatypeSettings: Seq[Def.Setting[?]] = Seq(
-  sonatypeProfileName := "org.jetbrains",
-  homepage := Some(url("https://github.com/JetBrains/sbt-structure")),
-  sonatypeProjectHosting := Some(GitHubHosting("JetBrains", "sbt-structure", "scala-developers@jetbrains.com")),
   licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html")),
+
+  // Optional but nice-to-have
+  organizationName := "JetBrains",
+  organizationHomepage := Some(url("https://www.jetbrains.com/")),
+
+  homepage := Some(url("https://github.com/JetBrains/sbt-idea-shell")),
+
+  developers := List(
+    Developer(
+      id = "JetBrains",
+      name = "JetBrains",
+      email = "scala-developers@jetbrains.com",
+      url = url("https://github.com/JetBrains")
+    )
+  ),
+
+  scmInfo := Some(
+    ScmInfo(
+      url("https://github.com/JetBrains/sbt-idea-shell"),
+      "scm:git:git@github.com:JetBrains/sbt-idea-shell.git",
+      "scm:git:git@github.com:JetBrains/sbt-idea-shell.git"
+    )
+  ),
 )
 
 val scriptedTestsSettings: Seq[Def.Setting[?]] = Seq(
@@ -55,8 +74,8 @@ lazy val root = project.in(file("."))
     scriptedTestsSettings,
 
     scalaVersion := Scala3,
-//    scalaVersion := Scala212,
-//    scalaVersion := Scala210,
+    //    scalaVersion := Scala212,
+    //    scalaVersion := Scala210,
 
     dependencyOverrides := Nil,
     crossScalaVersions := Seq(
