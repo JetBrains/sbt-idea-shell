@@ -11,12 +11,3 @@
          |Specify this property using the scriptedLaunchOpts -D.""".stripMargin)
   }
 }
-
-// Use 2 digits version to match the published artifact
-// This is primarily needed for sbt 2.0.0-<tag> version, which we publish with `_sbt2.0` suffix
-// instead of the default, full suffix `_sbt2.0.0-<tag>`
-pluginCrossBuild / sbtBinaryVersion := {
-  val sbtVersion3Digits = (pluginCrossBuild / sbtVersion).value
-  val sbtVersion2Digits = sbtVersion3Digits.substring(0, sbtVersion3Digits.lastIndexOf("."))
-  sbtVersion2Digits
-}

@@ -19,7 +19,7 @@ object pluginCommands {
     }
     val prompt = IdeaPromptMarker + userPrompt
 
-    val reader = new FullReader(history, s.combinedParser)
+    val reader = FullReaderCompat.newFullReader(history, s)
     val line = reader.readLine(prompt)
     line match {
       case Some(cmd) =>
