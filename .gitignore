@@ -21,6 +21,7 @@ bin
 # Simple Build Tool
 # http://www.scala-sbt.org/release/docs/Getting-Started/Directories.html#configuring-version-control
 
+.bsp
 dist/*
 lib_managed/
 src_managed/
