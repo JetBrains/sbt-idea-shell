@@ -3,7 +3,7 @@ import sbt.{Def, url}
 
 val Scala210 = "2.10.7"
 val Scala212 = "2.12.20"
-val Scala3 = "3.7.2"
+val Scala3 = "3.7.3"
 
 val SbtVersion_0_13 = "0.13.18"
 // keep this as low as possible
