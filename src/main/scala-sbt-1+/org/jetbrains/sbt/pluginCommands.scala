@@ -12,14 +12,15 @@ object pluginCommands {
    * copied and adapted from `shell` command in [[sbt.BasicCommands]] (since `1.x` renamed to "oldshell")
    */
   def ideaShell: Command = Command.command(IdeaShellCommandString, Help.more(IdeaShellCommandString, ShellDetailed)) { s =>
-    val history = s.get(BasicKeys.historyPath).getOrElse(Some(new File(s.baseDir, ".history")))
     val userPrompt = s.get(BasicKeys.shellPrompt) match {
       case Some(pf) => pf(s)
       case None => "> "
     }
     val prompt = IdeaPromptMarker + userPrompt
 
-    val reader = FullReaderCompat.newFullReader(history, s)
+    // Do not pass the history file to avoid cluttering sbt's default command history
+    // and because it's unnecessary - the IDEA shell (AbstractConsoleRunnerWithHistory) provides its own history mechanism.
+    val reader = FullReaderCompat.newFullReader(history = None, s)
     val line = reader.readLine(prompt)
     line match {
       case Some(cmd) =>
