@@ -15,10 +15,7 @@ object IdeaShellPlugin extends AutoPlugin {
 
   object autoImport {}
 
-  override lazy val projectSettings: Seq[Def.Setting[_]] = Seq(
-    // history is provided by builtin shell, don't spam regular history with generated commands
-    sbt.Keys.historyPath := None
-  )
+  override lazy val projectSettings: Seq[Def.Setting[_]] = Seq()
 
   override lazy val buildSettings: Seq[Def.Setting[_]] = Seq(
     commands += ideaShell
