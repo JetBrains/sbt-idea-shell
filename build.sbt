@@ -9,7 +9,7 @@ val SbtVersion_0_13 = "0.13.18"
 // keep this as low as possible
 // to avoid running into binary incompatibility such as https://github.com/sbt/sbt/issues/5049
 val SbtVersion_1_0 = "1.0.0"
-val SbtVersion_2 = "2.0.0-RC7"
+val SbtVersion_2 = "2.0.0-RC8"
 
 val SbtVersion_1_LatestForTests = "1.12.0"
 
