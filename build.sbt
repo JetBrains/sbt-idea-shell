@@ -2,7 +2,7 @@ import lmcoursier.internal.shaded.coursier.core.Version
 import sbt.{Def, url}
 
 val Scala210 = "2.10.7"
-val Scala212 = "2.12.20"
+val Scala212 = "2.12.21"
 val Scala3 = "3.7.4"
 
 val SbtVersion_0_13 = "0.13.18"
@@ -11,7 +11,7 @@ val SbtVersion_0_13 = "0.13.18"
 val SbtVersion_1_0 = "1.0.0"
 val SbtVersion_2 = "2.0.0-RC7"
 
-val SbtVersion_1_LatestForTests = "1.11.4"
+val SbtVersion_1_LatestForTests = "1.12.0"
 
 val sonatypeSettings: Seq[Def.Setting[?]] = Seq(
   licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html")),
