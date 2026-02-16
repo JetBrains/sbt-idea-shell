@@ -11,7 +11,7 @@ val SbtVersion_0_13 = "0.13.18"
 val SbtVersion_1_0 = "1.0.0"
 val SbtVersion_2 = "2.0.0-RC8"
 
-val SbtVersion_1_LatestForTests = "1.12.0"
+val SbtVersion_1_LatestForTests = "1.12.3"
 
 val sonatypeSettings: Seq[Def.Setting[?]] = Seq(
   licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html")),
