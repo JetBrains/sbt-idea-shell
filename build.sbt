@@ -38,7 +38,7 @@ val sonatypeSettings: Seq[Def.Setting[?]] = Seq(
       "scm:git:git@github.com:JetBrains/sbt-idea-shell.git",
       "scm:git:git@github.com:JetBrains/sbt-idea-shell.git"
     )
-  ),
+  )
 )
 
 val scriptedTestsSettings: Seq[Def.Setting[?]] = Seq(
@@ -110,5 +110,5 @@ lazy val root = project.in(file("."))
         Seq(baseDir / "scala-sbt-1+")
       else
         Seq.empty
-    },
+    }
   )
