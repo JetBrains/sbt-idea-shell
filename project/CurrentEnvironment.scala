@@ -2,15 +2,6 @@ import sbt.File
 
 object CurrentEnvironment {
 
-  val UserHome: File = new File(System.getProperty("user.home")).getCanonicalFile.ensuring(_.exists())
-
-  val SbtGlobalRoot: File = new File(UserHome, ".sbt-structure-global").getCanonicalFile
-
-  println(
-    s"""sbt global root : $SbtGlobalRoot
-       |see sbt-launcher logs in $SbtGlobalRoot/boot/update.log""".stripMargin
-  )
-
   lazy val getIvyHomeVmOptionForTeamcity: Seq[String] =
     if (CurrentEnvironment.isRunningOnTeamcity) {
       val ivyHomeResult = CurrentEnvironment.detectIvyHomeOnTeamcity
