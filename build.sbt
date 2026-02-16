@@ -115,7 +115,7 @@ lazy val root = project.in(file("."))
     },
   )
 
-addCommandAlias("runScriptedTestsAll", s""" ; runScriptedTestsScala3 ; runScriptedTestsScala212 ; runScriptedTestsScala210""")
-addCommandAlias("runScriptedTestsScala3", s""" ; set scalaVersion := "$Scala3"   ; scripted sbt-idea-shell/shell-command-sbt2""")
-addCommandAlias("runScriptedTestsScala212", s""" ; set scalaVersion := "$Scala212" ; scripted sbt-idea-shell/shell-command""")
-addCommandAlias("runScriptedTestsScala210", s""" ; set scalaVersion := "$Scala210" ; scripted sbt-idea-shell/shell-command""")
+addCommandAlias("runScriptedTestsAll", s"""; runScriptedTestsScala3; runScriptedTestsScala212; runScriptedTestsScala210""")
+addCommandAlias("runScriptedTestsScala3", s"""; set scalaVersion := "$Scala3"; scripted sbt-idea-shell/shell-command-sbt2""")
+addCommandAlias("runScriptedTestsScala212", s"""; set scalaVersion := "$Scala212"; scripted sbt-idea-shell/shell-command""")
+addCommandAlias("runScriptedTestsScala210", s"""; set scalaVersion := "$Scala210"; scripted sbt-idea-shell/shell-command""")
