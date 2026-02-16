@@ -121,8 +121,3 @@ lazy val root = project.in(file("."))
         Seq.empty
     },
   )
-
-addCommandAlias("runScriptedTestsAll", s"""; runScriptedTestsScala3; runScriptedTestsScala212; runScriptedTestsScala210""")
-addCommandAlias("runScriptedTestsScala3", s"""; set scalaVersion := "$Scala3"; scripted""")
-addCommandAlias("runScriptedTestsScala212", s"""; set scalaVersion := "$Scala212"; scripted""")
-addCommandAlias("runScriptedTestsScala210", s"""; set scalaVersion := "$Scala210"; scripted""")
