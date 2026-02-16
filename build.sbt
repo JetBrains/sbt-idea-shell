@@ -57,15 +57,6 @@ val scriptedTestsSettings: Seq[Def.Setting[?]] = Seq(
       SbtVersion_2_LatestForTests
     else
       scriptedSbt.value
-  },
-
-  scripted / javaHome := {
-    val version = scriptedSbt.value
-    // Uses an old Java runtime for sbt 0.13 scripted tests.
-    if (version.startsWith("0"))
-      Some(CurrentEnvironment.JavaOldHome)
-    else
-      None
   }
 )
 
