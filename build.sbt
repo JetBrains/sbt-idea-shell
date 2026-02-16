@@ -77,13 +77,12 @@ lazy val root = project.in(file("."))
     //    scalaVersion := Scala212,
     //    scalaVersion := Scala210,
 
-    dependencyOverrides := Nil,
     crossScalaVersions := Seq(
       Scala210,
       Scala212,
-      Scala3,
+      Scala3
     ),
-    crossSbtVersions := Nil, // handled by explicitly setting sbtVersion via scalaVersion
+
     sbtVersion := {
       scalaVersion.value match {
         case `Scala210` => SbtVersion_0_13
@@ -108,16 +107,11 @@ lazy val root = project.in(file("."))
     Compile / unmanagedSourceDirectories ++= {
       val sbtVersion = Version((pluginCrossBuild / sbtBinaryVersion).value)
       val baseDir = (Compile / sourceDirectory).value
-      val dirs = Seq.newBuilder[File]
-
+      // Add a source directory which is used by both sbt 1 and sbt 2.
       if (sbtVersion >= Version("1.0"))
-        dirs += (baseDir / "scala-sbt-1+")
-      if (sbtVersion.repr.startsWith("1"))
-        dirs += (baseDir / "scala-sbt-1.x")
-      if (sbtVersion >= Version("2.0"))
-        dirs += (baseDir / "scala-sbt-2.x")
-
-      dirs.result()
+        Seq(baseDir / "scala-sbt-1+")
+      else
+        Seq.empty
     },
   )
 
