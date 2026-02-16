@@ -12,6 +12,7 @@ val SbtVersion_1_0 = "1.0.0"
 val SbtVersion_2 = "2.0.0-RC8"
 
 val SbtVersion_1_LatestForTests = "1.12.3"
+val SbtVersion_2_LatestForTests = "2.0.0-RC9"
 
 val sonatypeSettings: Seq[Def.Setting[?]] = Seq(
   licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html")),
@@ -48,18 +49,24 @@ val scriptedTestsSettings: Seq[Def.Setting[?]] = Seq(
     s"-Dplugin.version=${version.value}",
   ) ++ CurrentEnvironment.getIvyHomeVmOptionForTeamcity,
 
-  scripted / javaHome := Some(CurrentEnvironment.JavaOldHome),
-
-  // NOTE: in practice `scripted / javaHome` doesn't work, and the jdk is not used in tests for older sbt versions.
-  // In older sbt it will use the "java" command and use the globally installed JDK.
-  // Right now the only way to work around this is to ensure that globally installed java is set to the desired.
-  // But we instead just run the tests with the latest sbt version that doesn't have this issue and uses the javaHome
   scriptedSbt := {
-    if (sbtVersion.value.startsWith("1"))
+    val version = sbtVersion.value
+    if (version.startsWith("1"))
       SbtVersion_1_LatestForTests
+    else if (version.startsWith("2"))
+      SbtVersion_2_LatestForTests
     else
       scriptedSbt.value
   },
+
+  scripted / javaHome := {
+    val version = scriptedSbt.value
+    // Uses an old Java runtime for sbt 0.13 scripted tests.
+    if (version.startsWith("0"))
+      Some(CurrentEnvironment.JavaOldHome)
+    else
+      None
+  }
 )
 
 lazy val root = project.in(file("."))
