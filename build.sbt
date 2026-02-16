@@ -49,6 +49,14 @@ val scriptedTestsSettings: Seq[Def.Setting[?]] = Seq(
     s"-Dplugin.version=${version.value}",
   ) ++ CurrentEnvironment.getIvyHomeVmOptionForTeamcity,
 
+  scriptedLaunchOpts ++= {
+    // When running scripted tests on sbt 0.13, allow the security manager to be used.
+    if (sbtVersion.value.startsWith("0"))
+      Seq("-Djava.security.manager=allow")
+    else
+      Seq.empty
+  },
+
   scriptedSbt := {
     val version = sbtVersion.value
     if (version.startsWith("1"))
