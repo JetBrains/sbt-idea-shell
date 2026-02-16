@@ -85,17 +85,26 @@ lazy val root = project.in(file("."))
     ),
     crossSbtVersions := Nil, // handled by explicitly setting sbtVersion via scalaVersion
     sbtVersion := {
-      val scalaVer = scalaVersion.value
-      if (scalaVer == Scala210)
-        SbtVersion_0_13
-      else if (scalaVer == Scala212)
-        SbtVersion_1_0
-      else if (scalaVer == Scala3)
-        SbtVersion_2
-      else
-        throw new IllegalArgumentException(s"Unsupported scalaBinaryVersion: $scalaVer")
+      scalaVersion.value match {
+        case `Scala210` => SbtVersion_0_13
+        case `Scala212` => SbtVersion_1_0
+        case `Scala3`   => SbtVersion_2
+        case v =>
+          throw new IllegalArgumentException(s"Unsupported scalaVersion: $v")
+      }
     },
-    scalacOptions ++= Seq("-deprecation", "-feature"),
+    scalacOptions ++= {
+      Seq("-deprecation", "-feature") ++ {
+        scalaVersion.value match {
+          case `Scala212` | `Scala3` =>
+            // TODO: Set `--release 17` for Scala 3 when we start compiling against Scala 3.8+/Sbt 2.0.0-RC9+
+            Seq("--release", "8")
+          case _ => Seq.empty
+        }
+      }
+    },
+    // TODO: Set `--release 17` for Scala 3 when we start compiling against Scala 3.8+/Sbt 2.0.0-RC9+
+    javacOptions ++= Seq("--release", "8"),
     Compile / unmanagedSourceDirectories ++= {
       val sbtVersion = Version((pluginCrossBuild / sbtBinaryVersion).value)
       val baseDir = (Compile / sourceDirectory).value
