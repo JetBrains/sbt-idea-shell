@@ -4,5 +4,5 @@
     throw new RuntimeException(
       """|The system property 'plugin.version' is not defined.
          |Specify this property using the scriptedLaunchOpts -D.""".stripMargin)
-  else addSbtPlugin("org.jetbrains.scala" % """sbt-idea-shell""" % pluginVersion)
+  else addSbtPlugin("org.jetbrains.scala" % "sbt-idea-shell" % pluginVersion)
 }
